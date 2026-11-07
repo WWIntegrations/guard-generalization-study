@@ -1,0 +1,87 @@
+{
+  "format": "guardstudy.history.v1",
+  "status": "saved_predictions_recomputed",
+  "aggregates": [
+    {
+      "method": "base",
+      "group": "aggregate585",
+      "n": 585,
+      "tp": 202,
+      "fn": 11,
+      "fp": 290,
+      "tn": 82,
+      "adapter_sha256": null
+    },
+    {
+      "method": "lora_v2",
+      "group": "aggregate585",
+      "n": 585,
+      "tp": 198,
+      "fn": 15,
+      "fp": 19,
+      "tn": 353,
+      "adapter_sha256": "04d37a57a02a1a16310435218d833fe614480989fc7b6279b856d62cd7e7d4f5"
+    },
+    {
+      "method": "lora_v2",
+      "group": "aggregate2119",
+      "n": 2119,
+      "tp": 406,
+      "fn": 33,
+      "fp": 43,
+      "tn": 1637,
+      "adapter_sha256": "04d37a57a02a1a16310435218d833fe614480989fc7b6279b856d62cd7e7d4f5"
+    },
+    {
+      "method": "lora_v2",
+      "group": "public",
+      "n": 427,
+      "tp": 238,
+      "fn": 13,
+      "fp": 21,
+      "tn": 155,
+      "adapter_sha256": "04d37a57a02a1a16310435218d833fe614480989fc7b6279b856d62cd7e7d4f5"
+    },
+    {
+      "method": "lora_v2",
+      "group": "polish",
+      "n": 237,
+      "tp": 130,
+      "fn": 15,
+      "fp": 12,
+      "tn": 80,
+      "adapter_sha256": "04d37a57a02a1a16310435218d833fe614480989fc7b6279b856d62cd7e7d4f5"
+    },
+    {
+      "method": "lora_v2",
+      "group": "redteam",
+      "n": 45,
+      "tp": 29,
+      "fn": 4,
+      "fp": 0,
+      "tn": 12,
+      "adapter_sha256": "04d37a57a02a1a16310435218d833fe614480989fc7b6279b856d62cd7e7d4f5"
+    },
+    {
+      "method": "lora_v2",
+      "group": "difficult",
+      "n": 400,
+      "tp": 0,
+      "fn": 0,
+      "fp": 4,
+      "tn": 396,
+      "adapter_sha256": "04d37a57a02a1a16310435218d833fe614480989fc7b6279b856d62cd7e7d4f5"
+    },
+    {
+      "method": "lora_v2",
+      "group": "bids",
+      "n": 1000,
+      "tp": 0,
+      "fn": 0,
+      "fp": 6,
+      "tn": 994,
+      "adapter_sha256": "04d37a57a02a1a16310435218d833fe614480989fc7b6279b856d62cd7e7d4f5"
+    }
+  ],
+  "latency_definition": "historical_upper_middle_p50"
+}

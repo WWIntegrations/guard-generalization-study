@@ -1,0 +1,39 @@
+{
+  "format": "guardstudy.media.v1",
+  "recorded_on": "2026-11-07",
+  "source_html_sha256": "8ed458934d36b23d606c88d219e8f5b8666a7ad6f680d3804b1c2e788ec880c5",
+  "recorded_manifest_sha256": "702d9964128914beeee9390711033ce426ae33a003e46ba032be9ad38468e350",
+  "duration_seconds": 28.28,
+  "width": 1440,
+  "height": 900,
+  "encoded_fps": 25,
+  "frames": 707,
+  "gif_width": 720,
+  "gif_fps": 10,
+  "startup_trim_seconds": 3.5,
+  "audio": false,
+  "live_inference_in_browser": false,
+  "paid_generation": false,
+  "files": {
+    "showcase.mp4": {
+      "bytes": 3394053,
+      "sha256": "f988f88794c4bd8ccb23e698612732b8dcec86eaef5b0bfbe3b004c1dfb33944"
+    },
+    "demo.gif": {
+      "bytes": 3721824,
+      "sha256": "947adf0fc295a812d6ceea90f984d17d47a1b3f02d6c6b1c480f0e52bd43fb3f"
+    },
+    "poster.png": {
+      "bytes": 172300,
+      "sha256": "96ccd17d76de46602c05bb9b78dca72d75e8a6f2303643a4a62436d1b2d96063"
+    },
+    "architecture.svg": {
+      "bytes": 3628,
+      "sha256": "5e41a951e3e4f5edf0bf2c510a9290be7c6970252443ce3665e3ad289c61339a"
+    },
+    "favicon.svg": {
+      "bytes": 250,
+      "sha256": "2e8ec05d5060d7d5d13a4422ffcf46354bcf6068e328e5070e3cf4601f9a02e4"
+    }
+  }
+}

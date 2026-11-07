@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A recorded study of benign prompt false positives in Qwen3 Guard base and LoRA v2, with explicit exposure and coverage limits.">
+  <title>Guard Generalization Study</title>
+  <link rel="icon" href="__FAVICON__">
+  <style>__STYLE__</style>
+</head>
+<body>
+  <a class="skip-link" href="#inspector">Skip to recorded study</a>
+  <header class="header">
+    <a href="#hero" class="brand">Guard Study<span>Benign prompts. Measured boundaries.</span></a>
+    <nav aria-label="Main navigation"><a href="#corpus">Corpus</a><a href="#exposure">Exposure</a><a href="#results">Results</a><a href="#limits">Limits</a></nav>
+    <button id="pause" aria-label="Pause decorative motion">Pause</button>
+    <button id="menu-toggle" aria-label="Open navigation" aria-haspopup="dialog"><span></span><span></span></button>
+  </header>
+  <main id="scroller" class="scrollable-area">
+    <section class="hero" id="hero" aria-labelledby="page-title" tabindex="-1">
+      <div class="hero-sticky">
+        <h1 id="page-title" class="sr-only">Guard Generalization Study</h1>
+        <svg class="wordmark" viewBox="0 0 1400 500" preserveAspectRatio="none" aria-hidden="true"><text id="wordmark-desktop" x="0" y="470" textLength="1400" lengthAdjust="spacingAndGlyphs">GUARD LAB</text></svg>
+        <div class="wordmark-mobile" aria-hidden="true"><span>GUARD</span><span>LAB</span></div>
+        <div id="artwork" aria-hidden="true"></div>
+        <svg id="art-fallback" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g transform="translate(720 450) rotate(-25)"><path d="M-395-165Q0-235 395-165L395 175Q0 245-395 175Z" fill="#a84e25"/><path d="M-360-155Q-250-175-140-180V175Q-250 185-360 165Z" fill="#000"/><path d="M-120-181Q0-190 120-181V179Q0 190-120 179Z" fill="#000"/><path d="M140-180Q250-175 360-155V165Q250 185 140 175Z" fill="#000"/><g fill="#fff" font-family="Arial" font-size="32"><text x="-337" y="-105">Benign corpus</text><text x="-95" y="-115">Base model</text><text x="160" y="-105">LoRA v2</text></g><g stroke="#F4793A" stroke-width="8" fill="none"><path d="M-320 0h120v80h-120zM-70 0h140v80H-70zM190 0h120v80H190z"/></g></g></svg>
+        <div class="hero-caption">Good prompts.<br>False alarms.<br class="mobile-break"> An external test.</div>
+        <p id="render-status" class="render-status" hidden>Static artwork. The full study remains available below.</p>
+      </div>
+    </section>
+    <section class="sheet corpus" id="corpus" aria-labelledby="corpus-title" tabindex="-1">
+      <div class="corpus-visual" aria-hidden="true"><div class="source-ring-mask"><div class="source-ring"></div></div><div class="source-sheet"><span>NotInject</span><strong>BENIGN<br>BY DESIGN.</strong><div class="source-line"></div><p>One, two or three trigger words.<br>All labels: CLEAN.</p><span class="source-end">External dataset</span></div></div>
+      <div class="corpus-copy"><h2 id="corpus-title">STILL<br>BLOCKED?</h2><div class="copy-rule"><p>Can a guard recognise an ordinary request when it contains words associated with an attack?</p><p>NotInject supplies benign prompts. This study measures false alarms at a frozen threshold.</p><a href="https://huggingface.co/datasets/leolee99/NotInject" target="_blank" rel="noreferrer">Read the dataset card</a></div></div>
+    </section>
+    <section class="sheet exposure" id="exposure" aria-labelledby="exposure-title" tabindex="-1">
+      <h2 id="exposure-title">KNOW THE<br>EXPOSURE.</h2>
+      <div class="exposure-columns"><div><h3>Before the score.</h3><p>A public receipt reports exact, normalized and phrase overlap against a declared private inventory. Private training text stays private.</p></div><div><h3>Two views of the data.</h3><p>Raw unique prompts are descriptive. The audited primary cohort requires complete declared coverage and every cluster member clear under the audit.</p><p id="exposure-summary">No recorded exposure receipt loaded.</p></div></div>
+      <p class="exposure-note">Clear under this audit does not prove absence of pretraining exposure, paraphrases or related examples.</p>
+    </section>
+    <section class="sheet results" id="results" aria-labelledby="results-title" tabindex="-1">
+      <div class="results-copy"><h2 id="results-title">SAME<br>PROMPTS.</h2><p>Base and LoRA v2 see the same original prompt text. The decision threshold stays at 0.5.</p><p>False positives are shown with their denominator, missing predictions and coverage. A completed bad result is still a valid result.</p></div>
+      <div class="result-tiles"><article><h3>Base</h3><p id="base-result" class="primary-result">No recorded primary result</p><p id="base-raw-result" class="secondary-result">No recorded raw descriptive result</p><span>Qwen3-1.7B</span></article><article><h3>LoRA v2</h3><p id="v2-result" class="primary-result">No recorded primary result</p><p id="v2-raw-result" class="secondary-result">No recorded raw descriptive result</p><span>Frozen adapter</span></article><article><h3>Coverage</h3><p id="coverage-result" class="primary-result">Primary: not available</p><p id="coverage-raw-result" class="secondary-result">Raw descriptive: not available</p><span>ok / expected unique prompts in each named cohort</span></article><article><h3>Attack recall</h3><p>Not applicable</p><span>Single-class benign corpus</span></article></div>
+    </section>
+    <section class="inspector" id="inspector" aria-labelledby="inspector-title" tabindex="-1"><h2 id="inspector-title">INSPECT<br>THE STUDY.</h2><p id="build-mode" role="status"></p><div id="study-content"></div></section>
+    <section class="limits" id="limits" aria-labelledby="limits-title" tabindex="-1"><h2 id="limits-title">WHAT THIS<br>CAN'T SAY.</h2><div><p>This benign-only corpus cannot establish attack recall, precision, AUROC, attack success rate or binary F1. Those metrics are unavailable, not zero.</p><p>Recorded verification replays metrics from saved predictions. It does not repeat model inference, authenticate the author or prove when the run happened.</p><p>Group membership can overlap. Timing is local and the model order is fixed. Neither is a universal performance claim.</p><p>Public metric replay needs the recorded files. Full LoRA inference also needs the matching adapter weights and runtime.</p></div></section>
+    <footer><a href="#hero">Guard Generalization Study</a><span>Made by WW</span></footer>
+  </main>
+  <a class="inspect-cta" href="#inspector"><span>Inspect study</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 6 6 6-6 6M5 12h11"/></svg></a>
+  <dialog id="menu" aria-label="Navigation"><button id="menu-close" aria-label="Close navigation">Close</button><nav aria-label="Expanded navigation"><a href="#corpus">Corpus</a><a href="#exposure">Exposure</a><a href="#results">Results</a><a href="#inspector">Inspect</a><a href="#limits">Limits</a></nav><p>Guard Generalization Study</p></dialog>
+  <script id="study-data" type="application/json">__DATA__</script>
+  <script id="asset-licenses" type="application/json">__LICENSES__</script>
+  <script>__BUNDLE__</script>
+</body>
+</html>

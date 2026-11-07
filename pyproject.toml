@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "guard-generalization-study"
+version = "0.1.0"
+description = "Frozen benign-only Guard evaluation with reproducible failure-aware metrics"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+parquet = ["pyarrow==26.0.0"]
+mlx = ["mlx==0.32.4", "mlx-lm==0.32.2", "numpy==2.5.4", "transformers==5.20.2"]
+
+[project.scripts]
+guardstudy = "guardstudy.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["guardstudy*"]

@@ -1,0 +1,17 @@
+{
+  "name": "guard-generalization-study-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Build-only dependencies for the offline procedural showcase",
+  "license": "MIT",
+  "scripts": {
+    "bundle": "esbuild showcase/main.js --bundle --format=iife --target=es2020 --minify --supported:template-literal=false --legal-comments=inline --outfile=showcase/bundle.js",
+    "build": "npm run bundle && python3 tools/build_showcase.py --from-recorded",
+    "test": "node --test showcase/*.test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "three": "0.187.0"
+  },
+  "type": "module"
+}

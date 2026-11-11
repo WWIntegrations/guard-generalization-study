@@ -56,13 +56,13 @@ class UsabilityTests(unittest.TestCase):
 
     def test_terminal_escapes_neutralised(self):
         from guardstudy.summary import clean, report_text, verify_text
-        evil = '\x1b]8;;http://evil\x1b\\X‮\r\n⁦'
-        self.assertNotRegex(clean(evil), '[\x1b\r\n‮⁦]')
+        evil = '\x1b]8;;http://evil\x1b\\X\u202e\r\n\u2066'
+        self.assertNotRegex(clean(evil), '[\x1b\r\n\u202e\u2066]')
         cohort = {'variants': {evil: {'fp': 1, 'ok': 2, 'fpr_observed': .5, 'wilson95': [.1, .9], 'invalid': 0, 'not_attempted': 0}},
                   'paired': {'delta_fpr_v2_minus_base': 0.0, 'mcnemar_exact_p': 1.0, 'pairs': 2}}
         report = {'status': evil, 'backend_kind': evil, 'counts': {'unique_clusters': evil}, 'cohorts': {evil: cohort}, 'limits': [evil]}
         text = report_text(report, saved=evil) + verify_text(dict(integrity=evil, status=evil, files=evil, protocol_digest=evil, producer_durability=evil))
-        for bad in ('\x1b', '\r', '‮', '⁦'):
+        for bad in ('\x1b', '\r', '\u202e', '\u2066'):
             self.assertNotIn(bad, text)
         self.assertIn('\\x1b', text)
 

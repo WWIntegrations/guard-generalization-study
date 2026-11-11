@@ -1,5 +1,10 @@
 # Guard Generalization Study
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/how-it-works-dark.svg">
+  <img src="docs/how-it-works-light.svg" alt="Harmless prompts are scored by a frozen prompt-injection classifier, base and LoRA v2, as a paired comparison. The study is saved, and a reader can verify and re-read it without rerunning any model." width="100%">
+</picture>
+
 Use it when you need to check how often a frozen prompt-injection classifier flags harmless prompts, and to verify and re-read a saved study without rerunning any model.
 
 ## Quickstart

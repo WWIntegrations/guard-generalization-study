@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 992 248" width="992" height="248" role="img" aria-labelledby="t d">
+<title id="t">run: bound files, one worker, every row kept</title><desc id="d">The run command checks the protocol against the dataset, local model files and runtime versions. A separate MLX worker scores each prompt under deadlines. Each expected row is saved as ok, invalid or not_attempted.</desc>
+<style>:root{--tlo:#050507;--tekst:#FDFFF5;--linia:#A8A8B0;--strefa:#A8A8B0;--wezel:#14141C;--wezel-tekst:#FDFFF5;--akcent:#8C8CF0;}text{font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;fill:var(--tekst)}.n{font-size:13px;font-weight:600;fill:var(--wezel-tekst)}.p{font-size:11px;fill:var(--wezel-tekst)}.s{font-size:12px;fill:var(--strefa)}.tt{font-size:16px;font-weight:700}.wz{fill:var(--wezel);stroke:var(--linia);stroke-width:1.5}.bram{stroke:var(--akcent);stroke-width:3}.mod{stroke-dasharray:0}.st{fill:none;stroke:var(--strefa);stroke-width:1.5;stroke-dasharray:6 4}.kr{stroke:var(--linia);stroke-width:1.5;fill:none}.gr{stroke:var(--akcent);stroke-width:2.5}.gt{fill:var(--akcent)}</style>
+<rect width="992" height="248" fill="#050507"/>
+<text class="tt" x="40" y="32">run: bound files, one worker, every row kept</text>
+<g><rect class="st" x="16" y="72" width="464" height="160" rx="6"/><text class="s" x="26" y="88">Coordinator, no MLX import</text></g>
+<g><rect class="st" x="512" y="72" width="216" height="160" rx="6"/><text class="s" x="522" y="88">Offline child process</text></g>
+<g><rect class="st" x="760" y="72" width="216" height="160" rx="6"/><text class="s" x="770" y="88">Run directory</text></g>
+<path class="kr" d="M208 152H280"/><path class="gt" d="M288 152l-9 -5v10z"/>
+<path class="kr" d="M456 152H528"/><path class="gt" d="M536 152l-9 -5v10z"/>
+<path class="gr" d="M496 102V202"/>
+<path class="kr" d="M704 152H776"/><path class="gt" d="M784 152l-9 -5v10z"/>
+<path class="gr" d="M744 102V202"/>
+<g data-id="a" data-typ="klient"><rect class="wz" x="40" y="116" width="168" height="72" rx="8"/>
+<text class="n" x="124" y="138" text-anchor="middle">protocol.json,</text>
+<text class="n" x="124" y="154" text-anchor="middle">dataset</text>
+<text class="p" x="124" y="178" text-anchor="middle">plus local model folders</text></g>
+<g data-id="b" data-typ="bramka"><rect class="wz bram" x="288" y="116" width="168" height="72" rx="8"/>
+<text class="n" x="372" y="144" text-anchor="middle">Binding check</text>
+<text class="p" x="372" y="178" text-anchor="middle">files, versions, source</text></g>
+<g data-id="c" data-typ="model"><rect class="wz" x="536" y="116" width="168" height="72" rx="8"/>
+<text class="n" x="620" y="144" text-anchor="middle">MLX worker</text>
+<text class="p" x="620" y="178" text-anchor="middle">base, then LoRA v2</text></g>
+<g data-id="d" data-typ="usluga"><rect class="wz" x="784" y="116" width="168" height="72" rx="8"/>
+<text class="n" x="868" y="144" text-anchor="middle">Predictions, runtime</text>
+<text class="p" x="868" y="178" text-anchor="middle">ok, invalid, not_attempted</text></g>
+</svg>

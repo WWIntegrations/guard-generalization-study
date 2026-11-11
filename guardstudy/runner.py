@@ -46,12 +46,14 @@ class Worker:
     def close(self):
         self.selector.close()
         if self.proc.poll() is None:
+            # The worker can exit between poll() and killpg(). Its own group then holds
+            # only a zombie: Linux reports ESRCH or succeeds, macOS reports EPERM.
             try: os.killpg(self.proc.pid,signal.SIGTERM)
-            except ProcessLookupError: pass
+            except (ProcessLookupError,PermissionError): pass
             try: self.proc.wait(timeout=2)
             except subprocess.TimeoutExpired:
                 try: os.killpg(self.proc.pid,signal.SIGKILL)
-                except ProcessLookupError: pass
+                except (ProcessLookupError,PermissionError): pass
                 self.proc.wait(timeout=2)
         self.proc.stdin.close();self.proc.stdout.close()
 

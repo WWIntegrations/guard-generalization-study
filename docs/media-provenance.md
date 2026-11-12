@@ -8,7 +8,7 @@ Chrome/Playwright captured a 1440x900 viewport locally. The final MP4 lasts 28.2
 
 The first encode contained blank browser startup frames. Inspection identified the first colored frame; the final encode omits 3.5 seconds of startup from the original recording. No study interaction was removed. All 707 final frames were checked for near-uniform gray recorder padding in sampled bottom and right edge bands; none was detected. A contact sheet and representative full-size interface screenshots were visually reviewed. This edge check is not a pixel-by-pixel inspection of every semantic element.
 
-The SVG diagram was exported through Darwin from an original mechanism specification. The animated meshes, paper textures, favicon and error page are original. Fonts use the included OFL notices. No reference photographs, proprietary fonts or reference website source are included. Composition references and differences are documented in [visual design](visual-design.md).
+The SVG diagram was drawn from an original mechanism specification. The animated meshes, paper textures, favicon and error page are original. Fonts use the included OFL notices. No reference photographs, proprietary fonts or reference website source are included. Composition references and differences are documented in [visual design](visual-design.md).
 
 Exact hashes and dimensions are recorded in [media-provenance.json](media-provenance.json). The HTML hash binds the recorded viewer to the tested build. Media hashes identify these files; they do not authenticate the recording operator or model execution.
 

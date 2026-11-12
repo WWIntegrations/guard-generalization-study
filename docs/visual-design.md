@@ -8,7 +8,7 @@ The original reference provides composition and motion direction. Different text
 
 The first screen is decorative. The inspector below reads a validated recorded bundle, shows actual public prompts and saved predictions, and exports the exact validated file bytes. Browser animation does not execute inference or show a live model response. The absolute animation phase is available to the local capture harness; Pause, reduced motion and a static artwork fallback preserve access to the study.
 
-The architecture SVG was exported locally through Darwin from an original five-node specification. It shows exposure audit, protocol freeze, isolated inference, false-positive accounting and offline verification. It is a static explanation of the mechanism, not an execution trace. Its XML and browser rendering were checked separately from the study's numerical results.
+The architecture SVG was drawn locally from an original five-node specification. It shows exposure audit, protocol freeze, isolated inference, false-positive accounting and offline verification. It is a static explanation of the mechanism, not an execution trace. Its XML and browser rendering were checked separately from the study's numerical results.
 
 The custom 404 page preserves the palette and type, includes English and Polish copy, and links back to the study. There is no hosted deployment in this repository's initial publication scope.
 

@@ -118,4 +118,4 @@ Python 3.11 or later on Linux or macOS; the offline validator has no third-party
 - The historical private Guard audit is separate evidence. Recomputing old predictions is not a fresh inference experiment.
 - A valid hash bundle does not prove who ran it, when the protocol was frozen, whether timing measurements are truthful or whether an operator received filesystem sync acknowledgements.
 
-See the [results and research scope](RESEARCH.md), [data card](DATA_CARD.md), [model card](MODEL_CARD.md), [design](docs/design.md) and [threat model](docs/threat-model.md). No salary, recruitment outcome, independent adoption or production safety is established by this repository.
+See the [results and research scope](RESEARCH.md), [data card](DATA_CARD.md), [model card](MODEL_CARD.md), [design](docs/design.md) and [threat model](docs/threat-model.md). Independent adoption and production safety are not established by this repository.

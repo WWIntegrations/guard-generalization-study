@@ -20,6 +20,10 @@ class MetricsTests(unittest.TestCase):
         result=paired(a,b,['0','1','2','3'])
         self.assertEqual(result['mcnemar_exact_p'],.25);self.assertEqual(result['missing_pairs'],1)
         self.assertEqual(paired([],[],[])['mcnemar_exact_p'],None)
+    def test_wilson_extremes_are_exact(self):
+        # 0/n has lower bound exactly 0 and n/n upper bound exactly 1, not a rounding residue.
+        for n in range(1,400):
+            self.assertEqual(wilson(0,n)[0],0.0);self.assertEqual(wilson(n,n)[1],1.0)
     def test_latency(self):
         r=latency([1,2,3,4]);self.assertEqual((r['mean'],r['median'],r['p95']),(2.5,2.5,4))
         self.assertIsNone(latency([])['median'])

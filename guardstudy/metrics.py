@@ -9,7 +9,8 @@ def wilson(fp,n):
     z=1.96;p=fp/n;den=1+z*z/n
     center=(p+z*z/(2*n))/den
     width=z*math.sqrt(p*(1-p)/n+z*z/(4*n*n))/den
-    return [max(0,center-width),min(1,center+width)]
+    # The closed-form bounds are exactly 0 at fp=0 and 1 at fp=n; floating point can miss by 1e-17.
+    return [0.0 if fp==0 else max(0,center-width),1.0 if fp==n else min(1,center+width)]
 
 def latency(values):
     if any(type(x) is not int or x<0 for x in values): raise StudyError('duration')

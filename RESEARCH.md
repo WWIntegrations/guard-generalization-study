@@ -19,7 +19,7 @@ The primary paired comparison has 40 prompts flagged only by base, 26 flagged on
 
 All 339 unique public prompts form a separate descriptive cohort, including the 82 exposure-unknown short prompts. Base flags 150 / 339 (44.25%; Wilson 95% interval 39.05% to 49.57%), and v2 flags 113 / 339 (33.33%; interval 28.53% to 38.51%). There are 65 base-only false positives, 28 v2-only, 85 common false positives and 161 common clean decisions. The paired difference is -10.9145 percentage points, with exact McNemar p = 0.0001575708.
 
-The descriptive result must not substitute for the prespecified primary result. Among the 82 short prompts excluded from primary, the counts are 40 base false positives and 17 v2 false positives; their inclusion changes the observed aggregate difference. The eligibility rule was not revised after seeing these results.
+The descriptive result must not substitute for the prespecified primary result. Among the 82 short prompts excluded from primary, the counts are 40 base false positives and 17 v2 false positives (25 flagged only by base, 2 only by v2), so they supply 23 of the 37-prompt net reduction in the descriptive cohort. "Short" means fewer than eight Unicode regex word tokens: 80 of the 82 contain Chinese text, where an unspaced run of characters counts as one word. As a result the primary cohort holds only 4 of the 84 `Multilingual` category prompts, and the larger descriptive difference mainly reflects v2's lower false-positive rate on Chinese prompts. The eligibility rule was not revised after seeing these results.
 
 Every expected row completed, so observed FPR and missingness bounds coincide in this run. Wilson intervals remain conditional sampling calculations, not guarantees about arbitrary traffic. No attack recall, AUROC, precision, F1 or ASR can be measured on this benign-only corpus. No category-level significance claim is made without a prespecified multiplicity treatment.
 
@@ -58,7 +58,7 @@ The NotInject card and MIT notice concern the dataset. They do not license model
 
 ## Exposure analysis
 
-The data owner supplies a bounded inventory of known prepared splits, evaluation inputs, source inserts and translations. Exact UTF-8 hashes, NFKC/casefold/whitespace hashes and overlapping word 8-grams are checked locally. A shingle intersection divided by the smaller set cardinality of at least 0.5 is excluded. Prompts shorter than eight words remain unknown, not clear. Partial inventory coverage makes the primary cohort empty.
+The data owner supplies a bounded inventory of known prepared splits, evaluation inputs, source inserts and translations. Exact UTF-8 hashes, NFKC/casefold/whitespace hashes and overlapping word 8-grams are checked locally. A shingle intersection divided by the smaller set cardinality of at least 0.5 is excluded. Prompts with fewer than eight word tokens remain unknown, not clear. Word tokens are Unicode regex `\w+` matches, so text written without spaces, such as Chinese, usually falls in this group. Partial inventory coverage makes the primary cohort empty.
 
 This method cannot establish that paraphrases, related attack families or pretraining contamination are absent. Base model pretraining exposure remains unknown. Known training sources are not relabeled as external holdouts.
 

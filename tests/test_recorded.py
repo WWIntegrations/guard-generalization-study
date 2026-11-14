@@ -120,6 +120,18 @@ class RuntimeConsistencyTests(unittest.TestCase):
         (root/'recorded-manifest.json').write_bytes(canonical(manifest)+b'\n')
         with self.assertRaises(StudyError): verify_recorded(root)
 
+    def test_wrong_typed_member_is_closed_error_after_rehash(self):
+        from guardstudy.cli import main
+        d,e,p,o=fixture_bundle();root=Path(tempfile.mkdtemp())/'bundle';seal_recorded(o,dict(dataset=d,exposure=e,protocol=p),root)
+        doc=read_json(root/'predictions/base.json');doc['records'][0]['representative_id']=['unhashable']
+        raw=canonical(doc)+b'\n';(root/'predictions/base.json').write_bytes(raw)
+        manifest=read_json(root/'recorded-manifest.json')
+        for f in manifest['files']:
+            if f['name']=='predictions/base.json': f.update(size=len(raw),sha256=sha256(raw))
+        (root/'recorded-manifest.json').write_bytes(canonical(manifest)+b'\n')
+        with self.assertRaises(StudyError): verify_recorded(root)
+        self.assertEqual(main(['verify','--recorded-dir',str(root)]),2)
+
     def test_unknown_empty_directory_rejected(self):
         d,e,p,o=fixture_bundle();root=Path(tempfile.mkdtemp())/'bundle';seal_recorded(o,dict(dataset=d,exposure=e,protocol=p),root)
         (root/'unexpected-empty-directory').mkdir()

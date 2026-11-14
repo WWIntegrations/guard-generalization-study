@@ -4,7 +4,7 @@ Verified locally on 2026-11-07. These observations establish the tested behavior
 
 ## Experiment and portable evidence
 
-The frozen run completed 678 predictions: both variants evaluated all 339 public benign prompts, with zero invalid or missing rows. The prespecified primary cohort contains 257 prompts clear under the declared exposure audit. The other 82 prompts are too short for that audit and remain descriptive.
+The frozen run completed 678 predictions: both variants evaluated all 339 public benign prompts, with zero invalid or missing rows. The prespecified primary cohort contains 257 prompts clear under the declared exposure audit. The other 82 prompts have fewer than eight word tokens for that audit (80 of them contain Chinese text) and remain descriptive.
 
 Primary false positives are 110/257 for base and 96/257 for LoRA v2. The paired difference is -5.45 percentage points, with exact McNemar p = 0.10886. This does not establish a statistically resolved primary improvement. The lower descriptive p-value does not replace that result. Attack recall and other single-class-inapplicable metrics remain null.
 
@@ -29,5 +29,13 @@ The local server returned the custom 404 for five denied paths, including a repo
 Offline verification needs no model or third-party Python package. Repeating v2 inference also needs the exact separately held adapter, compatible Apple Silicon runtime and the locked model files. Hashes bind bytes, not an operator's identity, historical freeze time or timing truthfulness.
 
 CI is configured for Python 3.11/3.14, Node 22, real-bundle verification and deterministic viewer rebuild. The actual CI result is available in the repository's Actions history. No hosting deployment or full pixel-identical visual certification is claimed. See [visual design](visual-design.md) and [media provenance](media-provenance.md).
+
+## Re-check on 2026-11-14
+
+Every number in the README, cards, research record and this file that derives from the study data or the committed media was recomputed from `examples/recorded` and `docs/` with a separate script that does not import `guardstudy`: counts, rates, Wilson intervals, paired discordances, exact McNemar p-values, latency summaries, load times, exposure totals, source and model file sizes, digests and media properties. All of them matched. Browser assertion counts and earlier test durations were not re-run. One wording correction followed: the 82 audit-unknown prompts were described as short, but 80 of them contain Chinese text, which the word tokenizer splits into few words because it is written without spaces.
+
+The 16 implementation hashes in `protocol.json` match `guardstudy/` at commit `48fc114`, where 50 core tests passed. Later commits changed `cli.py` and `runner.py` and added `summary.py`, so `run` with this frozen protocol is refused with `implementation_binding` on current code, as designed. `verify` and `report` recompute the report from saved predictions and do not depend on that binding.
+
+This re-check fixed four defects, each with a regression test: `report` failed on an inconclusive bundle, `report --json` printed only the status, Wilson bounds at 0/n and n/n carried floating-point residue, and wrong-typed JSON fields raised `TypeError` instead of a closed error code. None changes the recorded report. Results: 61 Python core tests on Python 3.14.6 and 3.12.13, 12 Node tests, 6 builder tests, `verify` valid for 12 files and a byte-identical viewer rebuild.
 
 Made by WW

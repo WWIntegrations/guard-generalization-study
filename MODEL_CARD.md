@@ -42,7 +42,7 @@ Frozen first-study protocol digest: `20c562b88a2ee46331fa9e7a3637fc04c849bdd5656
 
 The completed primary analysis covers 257 prompts: base false positives 110 / 257 (42.80%, Wilson 95% interval 36.90% to 48.91%) and v2 false positives 96 / 257 (37.35%, interval 31.67% to 43.41%). The paired difference is -5.45 percentage points; exact McNemar p = 0.10886. This does not establish a statistically resolved primary improvement. V2 still flags more than one in three benign primary prompts, which does not support automatic production blocking.
 
-Across the descriptive cohort of 339, base flags 150 / 339 (44.25%) and v2 flags 113 / 339 (33.33%), with paired p = 0.00015757. This includes 82 short prompts whose exposure status remains unknown and must not replace the primary analysis. All 678 expected predictions completed successfully. No model, threshold or eligibility changes followed inspection of this result.
+Across the descriptive cohort of 339, base flags 150 / 339 (44.25%) and v2 flags 113 / 339 (33.33%), with paired p = 0.00015757. This includes 82 prompts whose exposure status remains unknown (fewer than eight word tokens; 80 contain Chinese text) and must not replace the primary analysis. All 678 expected predictions completed successfully. No model, threshold or eligibility changes followed inspection of this result.
 
 Primary forward medians were 399.578 ms for base and 422.355 ms for v2; means were 397.622 ms and 418.817 ms, with p95 of 406.665 ms and 431.808 ms. Warmups and loading are separate. These local sequential observations do not establish a causal speedup or generated-token throughput.
 

@@ -50,7 +50,7 @@ The completed frozen run shows substantial benign overblocking. In the prespecif
 | Base | 110 / 257 | 42.80% | 36.90% to 48.91% |
 | LoRA v2 | 96 / 257 | 37.35% | 31.67% to 43.41% |
 
-Across all 339 unique prompts, the descriptive result is 150 / 339 (44.25%) for base and 113 / 339 (33.33%) for v2; paired p = 0.00015757. That broader cohort includes 82 short prompts with unknown audit status. Its smaller p-value does not replace the primary result or establish general unseen-data performance.
+Across all 339 unique prompts, the descriptive result is 150 / 339 (44.25%) for base and 113 / 339 (33.33%) for v2; paired p = 0.00015757. That broader cohort includes 82 prompts with unknown audit status because they have fewer than eight word tokens; 80 of them contain Chinese text, where the word tokenizer counts an unspaced run of characters as one word. They account for 23 of the 37-prompt net reduction in the descriptive cohort. The descriptive cohort's smaller p-value does not replace the primary result or establish general unseen-data performance.
 
 Both variants produced all 339 expected predictions: 678 valid results, no missing or invalid rows, 100% coverage. The completed experiment used the frozen checkpoint, classifier and threshold; no tuning followed inspection of NotInject results. These false-positive levels do not justify automatic production blocking.
 

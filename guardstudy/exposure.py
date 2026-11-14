@@ -36,7 +36,7 @@ def audit_exposure(dataset,inventory):
         for gram in grams: inverted[gram].add(i)
     sources=[];missing=[];ids=set()
     for source in inventory['sources']:
-        if type(source) is not dict or set(source)!={'id','path','kind'} or not re.fullmatch(r'source-[0-9]{3,5}',source.get('id','')) or source['id'] in ids or source['kind'] not in ('prepared_rows','source_inserts','translations'): raise StudyError('inventory_schema')
+        if type(source) is not dict or set(source)!={'id','path','kind'} or type(source['id']) is not str or not re.fullmatch(r'source-[0-9]{3,5}',source['id']) or source['id'] in ids or source['kind'] not in ('prepared_rows','source_inserts','translations'): raise StudyError('inventory_schema')
         sid=source['id'];ids.add(sid)
         if type(source['path']) is not str or Path(source['path']).suffix!='.jsonl': raise StudyError('inventory_path')
         count=0

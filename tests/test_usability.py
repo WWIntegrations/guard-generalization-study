@@ -31,6 +31,24 @@ class UsabilityTests(unittest.TestCase):
             self.assertIn('exact McNemar p = 0.10886', result.stdout)
             self.assertIn('Limits:', result.stdout)
 
+    def test_report_json_is_the_verified_report(self):
+        result = run('report', '--recorded-dir', REC, '--json')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout), json.loads((ROOT / REC / 'report.json').read_text()))
+
+    def test_report_summary_for_inconclusive_bundle(self):
+        # Partial exposure coverage leaves the primary cohort empty: rates and p-values are undefined.
+        from guardstudy.recorded import seal_recorded
+        from tests.test_recorded import fixture_bundle
+        with tempfile.TemporaryDirectory() as work:
+            d, e, p, o = fixture_bundle()
+            seal_recorded(o, dict(dataset=d, exposure=e, protocol=p), Path(work) / 'bundle')
+            result = run('report', '--recorded-dir', str(Path(work) / 'bundle'))
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn('Study status: inconclusive.', result.stdout)
+            self.assertIn('0 / 0   flagged  FPR undefined  (Wilson 95% undefined)', result.stdout)
+            self.assertIn('paired difference (v2 minus base): undefined over 0 pairs', result.stdout)
+
     def test_report_out_writes_markdown_and_keeps_create_only(self):
         with tempfile.TemporaryDirectory() as work:
             target = str(Path(work) / 'r.md')

@@ -7,7 +7,9 @@ def validate(kind,obj):
     if type(obj) is not dict: raise StudyError('object_required')
     validator=globals().get('validate_'+kind.replace('-','_'))
     if validator is None: raise StudyError('schema_unknown')
-    validator(obj)
+    # Untrusted JSON can put a list or number where a string is expected; keep that a closed error.
+    try: validator(obj)
+    except TypeError: raise StudyError('schema_type') from None
 
 def fields(obj,names):
     if type(obj) is not dict or set(obj)!=set(names.split()): raise StudyError('schema_fields')

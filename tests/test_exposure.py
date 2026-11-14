@@ -23,6 +23,12 @@ class ExposureTests(unittest.TestCase):
         self.assertEqual(r['coverage'],'partial');self.assertEqual(cohorts(d,r)['audited_eligible_primary']['representative_ids'],[])
         r=audit_exposure(d,self.inventory('A completely different sentence containing at least eight different words.'))
         self.assertEqual(r['records'][0]['reason'],'unknown_short')
+    def test_inventory_wrong_types_are_schema_errors(self):
+        from guardstudy.io import StudyError
+        d=normalize_records(groups())
+        for source in [dict(id=7,path='a.jsonl',kind='prepared_rows'),dict(id=None,path='a.jsonl',kind='prepared_rows'),dict(id='source-001',path='a.jsonl',kind=['prepared_rows'])]:
+            with self.assertRaises(StudyError) as caught: audit_exposure(d,dict(sources=[source],declared_complete=True))
+            self.assertEqual(caught.exception.code,'inventory_schema')
     def test_normalized_and_ngram(self):
         g=groups();g['one'][0]['prompt']='Alpha beta gamma delta epsilon zeta eta theta iota kappa'
         d=normalize_records(g)

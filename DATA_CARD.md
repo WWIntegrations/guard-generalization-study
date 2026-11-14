@@ -32,7 +32,7 @@ The audit used exact UTF-8 hashes, NFKC/casefold/whitespace hashes and word 8-gr
 Exposure outcomes fixed before model inference:
 
 - 257 prompts: clear under the declared audit, eligible for the primary cohort.
-- 82 prompts: unknown because they contain fewer than eight words, excluded from the primary cohort.
+- 82 prompts: unknown because they contain fewer than eight word tokens, excluded from the primary cohort. The tokenizer is the Unicode regex `\w+`, so an unspaced run of Chinese characters counts as one word. 80 of these 82 prompts contain Chinese text, and 80 of the 84 `Multilingual` category prompts are outside the primary cohort. As a result, 254 of the 257 primary prompts are written mainly in Latin script.
 - 0 exact, normalized or shingle exclusions; 0 missing declared sources.
 - Descriptive cohort: all 339 unique public prompts, with exposure limitations visible.
 
@@ -44,6 +44,6 @@ Complete declared coverage does not mean comprehensive historical independence. 
 
 This is an English-tagged, small, deliberately constructed benign corpus with multilingual-query categories. Its original category spellings are preserved. It is suitable here for measuring benign false positives under the fixed classifier protocol. It cannot measure attack recall, AUROC, ASR, production-agent safety or representative internet performance. The completed run evaluated every unique prompt with both variants, yielding 678 valid predictions and no missing rows.
 
-The primary cohort of 257 produced 110 false positives for base (42.80%) and 96 for v2 (37.35%), with exact paired McNemar p = 0.10886. This does not establish a statistically resolved primary improvement; both variants overblock many benign prompts. The descriptive cohort of 339 produced 150 (44.25%) and 113 (33.33%) false positives respectively, with p = 0.00015757. The latter includes the 82 audit-unknown short prompts and does not replace the primary result. Source data, cohort membership and threshold were not changed to improve the result.
+The primary cohort of 257 produced 110 false positives for base (42.80%) and 96 for v2 (37.35%), with exact paired McNemar p = 0.10886. This does not establish a statistically resolved primary improvement; both variants overblock many benign prompts. The descriptive cohort of 339 produced 150 (44.25%) and 113 (33.33%) false positives respectively, with p = 0.00015757. The latter includes the 82 audit-unknown prompts, mostly Chinese, and does not replace the primary result. Source data, cohort membership and threshold were not changed to improve the result.
 
 Reacquire with `python -m guardstudy fetch --out-dir NEW_DIR`; import with pinned PyArrow 26.0.0. The verifier operates on materialized JSON without PyArrow or MLX. Reproducing private exposure comparisons requires access to the owner's private inventory; public receipts alone cannot prove that corpus's contents.

@@ -26,11 +26,13 @@ def report_text(report, saved=None):
         lines.append('')
         lines.append('%s:'%clean(name))
         for variant,r in cohort['variants'].items():
-            low,high=r['wilson95']
-            lines.append('  %-22s %3s / %-3s flagged  FPR %s  (Wilson 95%% %s to %s)  missing %s'%(
-                clean(variant),clean(r['fp']),clean(r['ok']),_pct(r['fpr_observed']),_pct(low),_pct(high),clean(r['invalid']+r['not_attempted'])))
+            # A cohort with no successful predictions (for example an empty primary cohort) has no interval.
+            interval='undefined' if r['wilson95'] is None else '%s to %s'%tuple(map(_pct,r['wilson95']))
+            lines.append('  %-22s %3s / %-3s flagged  FPR %s  (Wilson 95%% %s)  missing %s'%(
+                clean(variant),clean(r['fp']),clean(r['ok']),_pct(r['fpr_observed']),interval,clean(r['invalid']+r['not_attempted'])))
         p=cohort['paired']
-        lines.append('  paired difference (v2 minus base): %+.2f points, exact McNemar p = %.5f over %s pairs'%(
+        if p['delta_fpr_v2_minus_base'] is None: lines.append('  paired difference (v2 minus base): undefined over %s pairs'%clean(p['pairs']))
+        else: lines.append('  paired difference (v2 minus base): %+.2f points, exact McNemar p = %.5f over %s pairs'%(
             100*p['delta_fpr_v2_minus_base'],p['mcnemar_exact_p'],clean(p['pairs'])))
     lines.append('')
     lines.append('Limits:')

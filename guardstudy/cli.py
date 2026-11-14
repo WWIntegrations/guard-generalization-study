@@ -44,7 +44,7 @@ def free_dir(stem):
 
 def _render(args,result):
     public={k:v for k,v in result.items() if not k.startswith('_')}
-    if args.json: return canonical(public).decode()
+    if args.json: return canonical(result['_report'] if args.command=='report' else public).decode()
     from . import summary
     if args.command=='verify': return summary.verify_text(result)
     if args.command=='report': return summary.report_text(result['_report'],args.out)
